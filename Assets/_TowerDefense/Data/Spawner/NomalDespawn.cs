@@ -8,8 +8,11 @@ public class NomalDespawn : Despawn
         if (other.name.Contains("Enemy"))
         {
             this.isDead = true;
-            Dead dead = other.GetComponentInChildren<Dead>();
-            dead.Deduct(1);
+            this.isTimeDeath = false;
+            this.isHitTarget = true;
+            EnemyAbstact enemyCtrl = other.GetComponentInChildren<EnemyAbstact>();
+            enemyCtrl.Dead.Deduct(1);
+            enemyCtrl.SetIsDamaged(true);
         }
     }
 }

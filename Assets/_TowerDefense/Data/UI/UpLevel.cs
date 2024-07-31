@@ -17,7 +17,7 @@ public class UpLevel : ButtonTower
         LocationCtrl ctrl = location.GetComponent<LocationCtrl>();
         int coin = CoinManager.Instance.CoinAmount;
         TowerAbstact tower = ctrl.Tower;
-        if (tower == null)
+        if (tower == null || tower.UpgradeTowerLevel.MaxLevel)
         {
             this.Hidden();
             return;

@@ -28,5 +28,8 @@ public class EnemySpawner : Spawner
         ctrl.Dead.SetHPDefault();
         ctrl.Moving.SetCheckPoint(null);
         ctrl.Moving.ResetCheckPoint();
+        ctrl.Animator.SetBool("reset", false);
+        ctrl.Animator.SetBool("isDead", false);
+        ctrl.Moving.SetCheck(false);
     }
 }

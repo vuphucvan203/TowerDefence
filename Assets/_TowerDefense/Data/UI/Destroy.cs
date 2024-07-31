@@ -12,7 +12,7 @@ public class Destroy : ButtonTower
         Transform location = this.ctrl.TowerSelected.LocationSelected;
         if (location == null) return;
         LocationCtrl ctrl = location.GetComponent<LocationCtrl>();
-        CoinManager.Instance.AddCoinAmount(ctrl.Tower.TowerSO.ConditionsCoin);
+        CoinManager.Instance.AddCoinAmount(ctrl.Tower.TowerSO.Levels[0].Coint);
     }
 
     protected override void CheckCanShow()

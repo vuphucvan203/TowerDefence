@@ -59,7 +59,8 @@ public class UIBuildTowerCtrl : KennMonoBehaviour
 
     protected virtual void Show()
     {
-        transform.position = this.towerSelected.LocationSelected.transform.position;
+        LocationCtrl ctrl = this.towerSelected.LocationSelected.GetComponent<LocationCtrl>();
+        transform.position = this.towerSelected.LocationSelected.position;
         this.buttons.gameObject.SetActive(true);
     }
 }

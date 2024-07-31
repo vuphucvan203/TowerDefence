@@ -8,7 +8,8 @@ public class Moving : KennMonoBehaviour
     [SerializeField] protected WeaponCtrl ctrl;
     protected Vector3 targetPos;
     public Vector3 TargetPos { get => targetPos; set => targetPos = value; }
-    [SerializeField] protected float speed;
+    [SerializeField] protected int speed;
+    public void SetSpeed(int sp) => speed = sp;
     [SerializeField] protected float distance;
     [SerializeField] protected float timer;
 

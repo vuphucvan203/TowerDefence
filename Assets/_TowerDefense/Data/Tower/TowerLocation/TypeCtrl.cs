@@ -50,14 +50,14 @@ public class TypeCtrl : KennMonoBehaviour
     protected virtual void OnMouseDown()
     {
         TowerAbstact ctrl = this.tower.GetComponent<TowerAbstact>();
-        ctrl.SetIsClick(true);
+        ctrl.SetIsBuilt(true);
     }
 
     protected virtual void CheckEnoughCoin()
     {
         TowerAbstact towerCtrl = this.tower.GetComponent<TowerAbstact>();
         int coin = CoinManager.Instance.CoinAmount;
-        if (coin >= towerCtrl.TowerSO.ConditionsCoin) this.enoughCoin = true;
+        if (coin >= towerCtrl.TowerSO.Levels[0].Coint) this.enoughCoin = true;
         else this.enoughCoin = false;
     }
 

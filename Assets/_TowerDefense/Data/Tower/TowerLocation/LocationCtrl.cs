@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class LocationCtrl : KennMonoBehaviour
 {
+    [SerializeField] protected BoxCollider2D _collider;
+    public BoxCollider2D Collider => _collider;
     [SerializeField] protected Transform model;
     public Transform Model => model;
     [SerializeField] protected TowerAbstact tower;
@@ -18,15 +20,30 @@ public class LocationCtrl : KennMonoBehaviour
 
     protected virtual void Update()
     {
-        if (this.tower != null) this.hasTower = true;
+        if (this.tower != null)
+        {
+            this.hasTower = true;
+        }
+        else this.hasTower = false;
         this.tower = transform.GetComponentInChildren<TowerAbstact>();
         if (this.destroy) this.DestroyTower();
+        if (!this.hasTower) return;
+        if (this.isClick) this.tower.ShowAttackRange();
+        else this.tower.HiddenAttackRange();
     }
 
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.LoadCollider();
         this.LoadModel();
+    }
+
+    protected virtual void LoadCollider()
+    {
+        if (this._collider != null) return;
+        this._collider = GetComponent<BoxCollider2D>();
+        Debug.LogWarning(transform.name + ": LoadCollider", gameObject);
     }
 
     protected virtual void LoadModel()
@@ -50,7 +67,6 @@ public class LocationCtrl : KennMonoBehaviour
     {
         Destroy(this.tower.gameObject);
         this.destroy = false;
-        this.hasTower = false;
         this.model.gameObject.SetActive(true);
     }
 }

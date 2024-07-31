@@ -25,8 +25,8 @@ public class BuildTower : ButtonTower
     public override void OnClick()
     {
         TowerAbstact ctrl = this.tower.GetComponent<TowerAbstact>();
-        ctrl.SetIsClick(true);
-        CoinManager.Instance.ReductCoinAmount(ctrl.TowerSO.ConditionsCoin);
+        ctrl.SetIsBuilt(true);
+        CoinManager.Instance.ReductCoinAmount(ctrl.TowerSO.Levels[0].Coint);
     }
 
     protected override void CheckCanShow()
@@ -36,7 +36,7 @@ public class BuildTower : ButtonTower
         LocationCtrl locationCtrl = location.GetComponent<LocationCtrl>();
         TowerAbstact ctrl = this.tower.GetComponent<TowerAbstact>();
         int coint = CoinManager.Instance.CoinAmount;
-        if (coint >= ctrl.TowerSO.ConditionsCoin && !locationCtrl.HasTower) this.Show();
+        if (coint >= ctrl.TowerSO.Levels[0].Coint && !locationCtrl.HasTower) this.Show();
         else this.Hidden();
         
     }

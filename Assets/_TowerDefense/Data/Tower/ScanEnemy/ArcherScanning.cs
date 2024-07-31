@@ -9,6 +9,7 @@ public class ArcherScanning: TowerScanning
     {
         base.LoadComponent();
         this.LoadSpawner();
+        this.LoadCtrl();
     }
 
     protected virtual void LoadSpawner()
@@ -17,17 +18,14 @@ public class ArcherScanning: TowerScanning
         this.spawner = Transform.FindAnyObjectByType<ArrowSpawner>();
         Debug.LogWarning(transform.name + ": LoadSpawner", gameObject);
     }
-    protected override void SetValue()
-    {
-        base.SetValue();
-        this.speed = 2f;
-    }
 
     protected override void ActrackEnemy()
     {
         if (this.spawner.SpawnCount == this.spawner.SpawnMax) return;
         Vector3 angle = this.CalculateAngle();
-        this.spawner.Spawn(ArrowSpawner.Arrow, transform, enemy, angle);
+        UnitCtrl unitCtrl = this.ctrl.UnitContain.GetComponent<UnitCtrl>();
+        Vector3 position = unitCtrl.Model.position;
+        this.spawner.Spawn(ArrowSpawner.Arrow, position, transform, enemy, angle, speed);
     }
 
     protected virtual Vector3 CalculateAngle()

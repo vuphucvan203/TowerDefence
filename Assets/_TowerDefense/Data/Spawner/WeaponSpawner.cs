@@ -27,7 +27,7 @@ public class WeaponSpawner : Spawner
         Debug.LogWarning(transform.name + ": LoadCtrl", gameObject);
     }
 
-    public virtual Transform Spawn(string prefabName, Transform tower, Transform target, Vector3 angle)
+    public virtual Transform Spawn(string prefabName, Vector3 position, Transform tower, Transform target, Vector3 angle, int speed)
     {
         Transform prefab = this.GetPrefabByName(prefabName);
         if (prefab == null)
@@ -36,13 +36,14 @@ public class WeaponSpawner : Spawner
             return null;
         }
         Transform newPrefab = this.GetFromPool(prefab);
-        newPrefab.position = tower.position;
+        newPrefab.position = position;
         newPrefab.transform.eulerAngles = angle;
         newPrefab.SetParent(this.holder);
         newPrefab.gameObject.SetActive(true);
         WeaponCtrl ctrl = newPrefab.GetComponent<WeaponCtrl>();
         ctrl.Moving.GetTarget(target);
         ctrl.SetTower(tower);
+        ctrl.Moving.SetSpeed(speed);
         this.spawnCount++;
         return newPrefab;   
     }
@@ -68,5 +69,6 @@ public class WeaponSpawner : Spawner
         base.Despawn(obj);
         WeaponCtrl ctrl = obj.GetComponent<WeaponCtrl>();
         ctrl.Despawn.IsDead = false;
+        ctrl.Despawn.SetIsHitTarget(false);
     }
 }

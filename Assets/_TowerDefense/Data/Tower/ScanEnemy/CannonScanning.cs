@@ -18,16 +18,10 @@ public class CannonScanning: TowerScanning
         Debug.LogWarning(transform.name + ": LoadSpawner", gameObject);
     }
 
-    protected override void SetValue()
-    {
-        base.SetValue();
-        this.speed = 0.5f;
-    }
-
     protected override void ActrackEnemy()
     {
         if (this.spawner.SpawnCount == this.spawner.SpawnMax) return;
         Vector3 rotation = new Vector3(0, 0, 0);
-        this.spawner.Spawn(BombSpawner.Bomb, transform, enemy, rotation);
+        this.spawner.Spawn(BombSpawner.Bomb, this.ctrl.UnitContain.position, transform, enemy, rotation, speed);
     }
 }

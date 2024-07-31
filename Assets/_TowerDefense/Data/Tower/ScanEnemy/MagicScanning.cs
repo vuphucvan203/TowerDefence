@@ -21,16 +21,10 @@ public class MagicScanning: TowerScanning
         Debug.LogWarning(transform.name + ": LoadSpawner", gameObject);
     }
 
-    protected override void SetValue()
-    {
-        base.SetValue();
-        this.speed = 1.5f;
-    }
-
     protected override void ActrackEnemy()
     {
         if (this.spawner.SpawnCount == this.spawner.SpawnMax) return;
         Vector3 rotation = new Vector3(0, 0, 0);
-        this.spawner.Spawn(LightningSpawner.Lightning, transform, enemy, rotation);
+        this.spawner.Spawn(LightningSpawner.Lightning, this.ctrl.UnitContain.position, transform, enemy, rotation, speed);
     }
 }

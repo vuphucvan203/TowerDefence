@@ -8,7 +8,7 @@ public class CallEnemy : KennMonoBehaviour
 
     protected virtual void Update()
     {
-        if (this.turnManager.NextTurn) this.button.gameObject.SetActive(true); 
+        //if (this.turnManager.NextTurn) this.button.gameObject.SetActive(true); 
     }
 
     protected override void LoadComponent()

@@ -5,7 +5,8 @@ using UnityEngine;
 public enum EnemyType
 {
     None = 0,
-    Minion = 1,
+    Wolf = 1,
     Goblin = 2,
-    Orc = 3
+    Slime = 3,
+    Bee = 4,
 }

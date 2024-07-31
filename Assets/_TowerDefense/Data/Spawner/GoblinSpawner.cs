@@ -4,8 +4,8 @@ public class GoblinSpawner : EnemySpawner
 {
     protected static GoblinSpawner instance;
     public static GoblinSpawner Instance => instance;
-    protected static string goblin;
-    public static string Goblin = "Enemy_Goblin";
+    protected static string goblin = "Enemy_Goblin";
+    public static string Goblin => goblin;
 
     protected override void Awake()
     {

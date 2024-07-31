@@ -11,10 +11,28 @@ public class Despawn : KennMonoBehaviour
     [SerializeField] protected WeaponCtrl ctrl;
     [SerializeField] protected bool isDead;
     public bool IsDead { get => isDead; set => isDead = value; }
-    protected float timer;
+    [SerializeField] protected float timer;
+    [SerializeField] protected bool isTimeDeath;
+    [SerializeField] protected bool isHitTarget;
+    public void SetIsHitTarget(bool hitTarget) => isHitTarget = hitTarget;
+
+    protected override void Start()
+    {
+        base.Start();
+        this.isTimeDeath = true;
+    }
 
     protected virtual void Update()
     {
+        if(!this.isHitTarget && transform.gameObject.activeSelf) this.isTimeDeath = true;
+        if(this.isTimeDeath)
+        {
+            this.timer += Time.deltaTime;
+            if (this.timer < 2f) return;
+            this.IsDead = true;
+            this.isTimeDeath = false;
+            this.timer = 0f;
+        }
         if (this.isDead) this.ctrl.Spawner.Despawn(transform.parent);
     }
 

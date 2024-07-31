@@ -14,14 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turns:
   - enemies:
-    - type: 1
-      amount: 5
     - type: 3
+      amount: 5
+      delay: 2
+    - type: 2
       amount: 1
+      delay: 3
+    delay: 0
   - enemies:
+    - type: 3
+      amount: 10
+      delay: 0
     - type: 2
       amount: 3
-    - type: 3
-      amount: 2
+      delay: 2
     - type: 1
+      amount: 3
+      delay: 1
+    delay: 10
+  - enemies:
+    - type: 4
       amount: 5
+      delay: 0
+    delay: 15

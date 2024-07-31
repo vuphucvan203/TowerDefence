@@ -9,6 +9,8 @@ public class Enemy
     [SerializeField] protected EnemyType type;
     [SerializeField] protected int amount;
     public int Amount => amount;
+    [SerializeField] protected float delay;
+    public float Delay => delay;
 
     public virtual string EnemyTypeToName()
     {

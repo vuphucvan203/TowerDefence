@@ -8,4 +8,6 @@ public class Turn
 {
     [SerializeField] protected List<Enemy> enemies;
     public List<Enemy> Enemies => enemies;
+    [SerializeField] protected float delay;
+    public float Delay => delay;
 }

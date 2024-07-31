@@ -6,6 +6,7 @@ public class Spawner : KennMonoBehaviour
 {
     [Header("Spawner")]
     [SerializeField] protected Transform holder;
+    [SerializeField] protected Transform prefabs;
     [SerializeField] protected List<Transform> listPrefab;
     [SerializeField] protected List<Transform> poolingObj;
     public List<Transform> PrefabList => listPrefab;
@@ -18,6 +19,12 @@ public class Spawner : KennMonoBehaviour
 
     [SerializeField] protected bool isSpawn;
 
+    protected override void Start()
+    {
+        base.Start();
+        this.prefabs.gameObject.SetActive(false);
+    }
+
     protected override void LoadComponent()
     {
         base.LoadComponent();
@@ -27,7 +34,7 @@ public class Spawner : KennMonoBehaviour
 
     protected virtual void LoadListPrefab()
     {
-        Transform prefabs = transform.Find("Prefabs").GetComponent<Transform>();
+        this.prefabs = transform.Find("Prefabs").GetComponent<Transform>();
         if (this.listPrefab.Count > 0) return;
         for (int i = 0; i < prefabs.childCount; i++)
         {

@@ -6,8 +6,6 @@ using UnityEngine;
 public class TowerSO : ScriptableObject
 {
     [SerializeField] protected TowerType towerType;
-    [SerializeField] protected int conditionsCoin;
-    public int ConditionsCoin => conditionsCoin;
     [SerializeField] protected List<LevelUpgrade> levels;
     public List<LevelUpgrade> Levels => levels;
 }
